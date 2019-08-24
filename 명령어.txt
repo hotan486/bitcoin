@@ -1,0 +1,17 @@
+docker run -it --name eht-kosmo -v ./shared:/root/shared -p 30303:30303 -p 8545:8545 -p 8546:8546 eht-kosmo0 geth --networkid 44 --datadir /root/edu --nousb --rpc --rpcaddr 0.0.0.0 --rpccorsdomain "*" --ws --wsaddr 0.0.0.0 --wsorigins "*" --allow-insecure-unlock 
+네임과 이미지를 다르게 해야 한다.
+docker ps
+docker ps -a
+docker start eht-kosmo
+
+컨테이너명과 이미지명을 다르게 해야 한다.
+
+docker exec -it eht-kosmo /bin/bash
+
+cd edu
+ls -la
+geth attach ipc:/root/edu/geth.ipc
+
+
+
+docker logs -f eht-kosmo 로그 확인 
