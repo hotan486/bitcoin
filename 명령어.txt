@@ -32,3 +32,79 @@ http://remix.ethereum.org
 http://solidity.readthedocs.io
 
 
+//
+pragma solidity ^0.5.11;
+contract Receiver{
+    
+    /*struct UserInfo{
+        string userId;
+        string userName;
+        uint userAge;
+    }
+    
+    UserInfo public userInfo;
+    UserInfo[] public UserList;
+    
+    function addUser(string calldata _userid, 
+    string calldata _userName
+    ,uint _userAge) external returns(bool){
+        
+        bool result;
+        UserInfo memory user;
+        user.userId = _userid;
+        user.userName = _userName;
+        user.userAge = _userAge;
+        
+        uint i = UserList.push(user);
+        
+        if(i >0){
+            result = true;
+            
+        }
+        
+        return result;
+    }*/
+    
+   uint256 public v1;
+   event checkGasLeft(uint256 _gas);
+   
+   function () external payable{
+       
+       emit checkGasLeft(gasleft());
+       v1 = v1 + msg.value;
+   }
+    
+ 
+    
+}
+
+//
+
+pragma solidity ^0.5.11;
+import "./hello.sol";
+contract MySol{
+    
+    Receiver receiver;
+    
+    constructor(address payable _adder) public{
+        receiver = Receiver(_adder);
+    }
+    
+    function send() public{
+        address(receiver).transfer(0.1 ether);
+    }
+    
+    function () external payable{
+        
+    }
+    
+    function getBalance() public view returns (uint){
+        return address(this).balance;
+    }
+}
+
+
+
+
+
+
