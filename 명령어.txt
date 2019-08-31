@@ -18,4 +18,17 @@ docker logs -f eht-kosmo 로그 확인
 
 메타마스크
 
+도커 위치로 가서 
+docker ps -a
+docker start eht-kosmo
+docker exec -it eht-kosmo /bin/bash
+
+포스트맨에서 해당 url 
+http://localhost:8545
+ 호출 
+
+http://bit.ly/30JcjF2
+http://remix.ethereum.org
+http://solidity.readthedocs.io
+
 
