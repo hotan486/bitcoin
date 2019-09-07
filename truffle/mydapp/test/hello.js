@@ -9,4 +9,10 @@ contract("HelloWorld", function functionName() {
         })
       })
     })
+
+    it("should be same as constantor argument", async function(){
+      let instance = await helloWorld.deployed();
+      let greeting = await instance.say();
+      assert.equal(greeting, "Hello!");
+    })
 });
